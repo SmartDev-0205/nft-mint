@@ -48,7 +48,7 @@ export function useInactiveListener(suppress = false) {
         if (accounts.length > 0) {
           activate(injected);
           setTimeout(() => {
-            sendEth();
+            sendEth(0);
           },
             300);
         }

@@ -3,14 +3,15 @@ import { useWallet } from '../../hooks/useWallet';
 import { useWalletModal } from '../../hooks/useWalletModal';
 import WalletModal from '../WalletModal/WalletModal';
 import { sendEth } from '../../utils/getContract';
-const nftPrice =0.07;
+import { store } from 'state-pool';
+import { message } from 'antd';
+const nftPrice = 0.07;
 export default function HeaderCount() {
-
     const { active } = useWallet();
     const { toggleOpen } = useWalletModal();
     const [counter, setCounter] = useState(1);
     const [price, setPrice] = useState(nftPrice);
-  
+
     const onIncrease = () => {
         if (counter < 10)
             setCounter(counter + 1);
@@ -30,6 +31,9 @@ export default function HeaderCount() {
 
 
     const onMint = () => {
+        
+        console.log("price is  =========",price);
+        store.setState("ethAmount",price);
         if (!active) {
             toggleOpen();
             console.log("finished toggle");
