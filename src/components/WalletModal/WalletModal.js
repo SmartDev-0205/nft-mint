@@ -29,13 +29,13 @@ const WalletModal = () => {
         <Modal.Body>
           <ul >
             <li onClick={() => handleConnect('injected')} className="metamask-row  mb-3">
-              <p className="black-text">MetaMask</p> <img src={MetaMask} alt="metamask" width={20} height={20} />
+            <img src={MetaMask} alt="metamask" width={40} height={30} /><p className="black-text">MetaMask</p> 
             </li>
             <li onClick={() => handleConnect('walletconnect')} className="wallet-row mb-3">
-              <p className="black-text">WalletConnect</p> <img src={WalletConnectIcon} width={20} height={20}  alt="walletconnect" />
+            <img src={WalletConnectIcon} width={40} height={30}  alt="walletconnect" /> <p className="black-text">WalletConnect</p> 
             </li>
-            <li onClick={() => handleConnect('walletlink')} className="wallet-row">
-              <p className="black-text">Coinbase Wallet</p> <img src={CoinbaseWalletIcon} width={20} height={20} alt="coinbase" />
+            <li onClick={() => handleConnect('walletlink')} className="coinbase-row">
+            <img src={CoinbaseWalletIcon} width={40} height={40} alt="coinbase" /><p className="black-text">Coinbase Wallet</p>
             </li>
           </ul>
         </Modal.Body>
