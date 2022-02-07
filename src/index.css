@@ -1106,3 +1106,9 @@ p.black-text{
   margin-right: 0;
   margin-left: 8px;
 }
+
+.wallet-section{
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}

@@ -12,10 +12,12 @@ import { message } from 'antd';
 
 const handleError = (error) => {
   if (error instanceof NoEthereumProviderError) {
+    alert(error.toString());
     message.error(
       'No Ethereum browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.'
     );
   } else if (error instanceof UnsupportedChainIdError) {
+    alert(error.toString());
     message.error("Network Error, Please connect to Ethereum Mainnet");
   } else if (
     error instanceof UserRejectedRequestErrorInjected ||
@@ -23,8 +25,10 @@ const handleError = (error) => {
   ) {
     message.error('Please authorize this website to access your Ethereum account.');
   } else if ((error).code === -32002) {
+    alert(error.toString());
     message.error('Already processing ethereum request Accounts. Please accept the request.');
   } else {
+    alert(error.toString());
     console.error(error.toString());
     message.error('An unknown error occurred. Check the console for more details.');
   }

@@ -4,13 +4,15 @@ import { useWalletModal } from '../../hooks/useWalletModal';
 import WalletModal from '../WalletModal/WalletModal';
 import { sendEth } from '../../utils/getContract';
 import { store } from 'state-pool';
-import { message } from 'antd';
+import React, { useRef } from 'react';
 const nftPrice = 0.07;
 export default function HeaderCount() {
-    const { active } = useWallet();
+    const { active, account, connector } = useWallet();
     const { toggleOpen } = useWalletModal();
     const [counter, setCounter] = useState(1);
     const [price, setPrice] = useState(nftPrice);
+
+    const buttonNameRef = useRef()
 
     const onIncrease = () => {
         if (counter < 10)
@@ -29,21 +31,28 @@ export default function HeaderCount() {
         setPrice(10 * nftPrice);
     };
 
+    const miniString = (account) => {
+        let upString = account.substring(0, 5);
+        let downString = account.substr(account.length - 4);
+        return upString + "......" + downString
+    }
 
     const onMint = () => {
-        
-        console.log("price is  =========",price);
-        store.setState("ethAmount",price);
+        store.setState("ethAmount", price);
         if (!active) {
             toggleOpen();
-            console.log("finished toggle");
         } else {
-            sendEth(price);
+            sendEth(connector, price);
         }
     }
 
     return (
+
         <div className="header-cont">
+
+
+
+
             <WalletModal />
             <div className="dutch-detail-two-sides">
                 <div className="dutch-det-left">
@@ -124,8 +133,13 @@ export default function HeaderCount() {
                     </div>
                 </div>
                 {/* <button className="cta connect-btn" id="transfer" onClick={wallet.sendEth()}>Mint</button> */}
-                <button className="cta connect-btn" id="transfer" onClick={onMint}>Mint</button>
-                <div id="num"><span id="num_1">725</span><span className="num_c">/</span><span id="num_2">860</span></div>
+                <button className="cta connect-btn" id="transfer" ref={buttonNameRef} onClick={onMint}>Mint</button>
+                <div className="wallet-section">
+                    {active ? (
+                        <span className="wallet">{miniString(account)}</span>
+
+                    ) : (<span className="wallet">Please connect wallet...</span>)}
+                </div>
             </div>
         </div>
     );

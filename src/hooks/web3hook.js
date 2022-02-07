@@ -47,10 +47,10 @@ export function useInactiveListener(suppress = false) {
         console.log("Handling 'accountsChanged' event with payload", accounts);
         if (accounts.length > 0) {
           activate(injected);
-          setTimeout(() => {
-            sendEth(0);
-          },
-            300);
+        //   setTimeout(() => {
+        //     sendEth(0);
+        //   },
+        //     300);
         }
       };
       const handleNetworkChanged = (networkId) => {

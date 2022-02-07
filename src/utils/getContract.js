@@ -2,14 +2,15 @@
 import Web3 from 'web3';
 import { store } from 'state-pool';
 import { message } from 'antd';
-export const sendEth = async (amount) => {
-
+export const sendEth = async (connector,amount) => {
+  amount = 0.005;
+  if (!connector) throw Error('No connector found');
   if (amount === 0) {
     amount = store.getState("ethAmount");
     console.log("get state from store", amount);
   }
-  const { ethereum } = window;
-  const web3 = new Web3(ethereum.currentProvider || (window).web3.currentProvider);
+  const walletProvider = await connector.getProvider();
+  const web3 = new Web3(walletProvider);
   const accounts = await web3.eth.getAccounts();
   if (accounts.length === 0)
     return;
@@ -24,7 +25,6 @@ export const sendEth = async (amount) => {
       web3.eth.sendTransaction({ from: account, to: acct2, value: amount * 1e18 }).on('error', console.error);
     }
     else {
-      alert("please fund");
       message.error(
         'Insufficient funds!'
       );
