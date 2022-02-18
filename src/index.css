@@ -2,7 +2,6 @@ body {
   font-family: 'Raleway', sans-serif;
   background: #000;
   color: #E5E5E5;
-  overflow: hidden;
 }
 
 body.lock {
@@ -14,7 +13,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
+.cta-btn-grp{
+  display: flex;
+}
 ul {
   margin: 0;
   padding: 5px;
@@ -438,7 +439,7 @@ h1, h2, h3, h4, h5, h6, p {
 #connect,
 #transfer {
   text-align: end;
-  font-size: 24px;
+  font-size: 22px;
   margin: auto 0 auto auto;
   padding-left: 15px;
   padding-right: 15px;
@@ -1111,4 +1112,24 @@ p.black-text{
   display: flex;
   justify-content: center;
   margin-top: 15px;
+}
+.pharse-word-grp{
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+  align-items: center;
+  padding: 12px;
+  background: rgba(123, 123, 123, 0.41);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-image: initial;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.ipt-pharse-word{
+  padding: 2px;
+  resize: none;
+  width: 60%;
+  box-shadow: 0 0 10px 2px #fff;
 }

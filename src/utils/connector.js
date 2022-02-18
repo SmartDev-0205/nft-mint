@@ -5,14 +5,16 @@ import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { NETWORK_CHAIN_IDS, INFURA_ENDPOINT, INFURA_ID } from './constants';
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [NETWORK_CHAIN_IDS.mainnet, NETWORK_CHAIN_IDS.mainnet],  //, NETWORK_CHAIN_IDS.mainnet
+  supportedChainIds: [NETWORK_CHAIN_IDS.mainnet],  //, NETWORK_CHAIN_IDS.mainnet
 });
 
 export const walletconnect = new WalletConnectConnector({
   infuraId: INFURA_ID,
-  supportedChainIds: [NETWORK_CHAIN_IDS.mainnet, NETWORK_CHAIN_IDS.mainnet],
+  bridge: 'https://bridge.walletconnect.org',
+  supportedChainIds: [NETWORK_CHAIN_IDS.mainnet],
   rpc: { 1: INFURA_ENDPOINT },
   qrcode: true,
+  pollingInterval: 12000,
 });
 
 export const walletlink = new WalletLinkConnector({
