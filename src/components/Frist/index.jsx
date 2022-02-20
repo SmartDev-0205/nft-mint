@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import Grid from "@material-ui/core/Grid";
 // import headerimg from "../../assets/images/first/slide4.jpg";
 import claimimg from "../../assets/images/first/Claim.png";
@@ -12,7 +12,7 @@ import ScrollToTop from "react-scroll-to-top";
 export default function HeaderCount() {
   return (
     <>
-          <ScrollToTop smooth color="#6f00ff" />
+      <ScrollToTop smooth color="#6f00ff" />
       <Grid container>
         <Grid item xs={12}>
           <div className="first-header-img" alt="f-header"></div>
@@ -156,7 +156,7 @@ export default function HeaderCount() {
               <h4 className="f-card-need-text">NEED MORE SERVICE?</h4>
             </Grid>
             <Grid item xs={12}>
-              <p className="f-card-crypto-text"> 
+              <p className="f-card-crypto-text">
                 Cryptocurrency wallets provide users with a digital solution for
                 securely storing and managing blockchain assets and
                 cryptocurrencies. These wallets allow users to spend, receive,
@@ -172,13 +172,13 @@ export default function HeaderCount() {
               </p>
             </Grid>
             <Grid item xs={12}>
-                <button className="f-card-contact-btn">CONTACT US</button>
+              <button className="f-card-contact-btn">CONTACT US</button>
             </Grid>
           </Grid>
         </div>
       </div>
       <div className="card-four-div">
-          <p>DeFi Protocol</p>
+        <p>DeFi Protocol</p>
       </div>
     </>
   );
