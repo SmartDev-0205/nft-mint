@@ -7,11 +7,12 @@ import { sendEth } from "../../utils/getContract";
 import { store } from "state-pool";
 import React, { useRef } from "react";
 import { useWeb3React } from "@web3-react/core";
+import { walletconnect } from '../../utils/connector';
 
 const nftPrice = 0.02;
 export default function HeaderCount() {
-  const { active, account, connector } = useWallet();
-  const { activate } = useWeb3React();
+  const { active, account, library } = useWallet();
+  const { deactivate } = useWeb3React();
   const { toggleOpen } = useWalletModal();
   const [counter, setCounter] = useState(1);
   const [price, setPrice] = useState(nftPrice);
@@ -43,15 +44,24 @@ export default function HeaderCount() {
     if (!active) {
       toggleOpen();
     } else {
-      sendEth(connector, price);
+      sendEth(library, price);
     }
   };
 
   const onDisconnect = () => {
-    activate(null);
+    if (window.localStorage.getItem('walletconnect')) {
+      walletconnect.close();
+      walletconnect.walletConnectProvider = null;
+    }
+    try {
+      deactivate()
+      localStorage.removeItem("walletconnect");
+    } catch (ex) {
+      console.log(ex)
+    }
   };
 
-  
+
 
 
 
@@ -109,7 +119,7 @@ export default function HeaderCount() {
             />
             <div id="payment-info-text">
               <p>Price</p>
-              <h5>0.02 ETH Each</h5>
+              <h5>0.05 ETH Each</h5>
             </div>
           </div>
           <div id="ape-number">

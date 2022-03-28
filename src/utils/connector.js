@@ -14,7 +14,7 @@ export const walletconnect = new WalletConnectConnector({
   supportedChainIds: [NETWORK_CHAIN_IDS.mainnet],
   rpc: { 1: INFURA_ENDPOINT },
   qrcode: true,
-  pollingInterval: 12000,
+  pollingInterval: 8000,
 });
 
 export const walletlink = new WalletLinkConnector({

